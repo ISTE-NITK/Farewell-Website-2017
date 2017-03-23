@@ -172,11 +172,11 @@
 }
 
 .demo-1 .page-view .project:nth-child(1) {
-  background-image: url(../img/nature-1.jpeg);
+  background-image: url(../img1/homepage.jpg);
 }
 
 .demo-1 .page-view .project:nth-child(2) {
-  background-image: url(../img/nature-2.jpg);
+  background-image: url(../img1/page2.jpg);
 }
 
 .demo-1 .page-view .project:nth-child(3) {
