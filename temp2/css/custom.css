@@ -1,15 +1,30 @@
-body {
-        background-image: url("../img/back.jpg");
-        background-size: 1366px 768px;                 /* <------ */
-    background-repeat:   no-repeat;
-      
-} 
-#mybutton {
-  display: none;
-  color: #ffffff;
-  background-color: #9d0416;
-  width: 8em;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
+.person {
+  position: relative;
+  width: 100%;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .75s ease;
+  background-color: #008CBA;
+}
+
+.person:hover .overlay {
+  opacity: 0.5;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 }

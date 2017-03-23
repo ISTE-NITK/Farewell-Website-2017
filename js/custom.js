@@ -1,81 +1,56 @@
-jQuery(document).ready(function() {
-  
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 1;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
 
-   $('#carouselHacked').carousel();
-  
-	//this code is for the gmap
-	 var map = new GMaps({
-        el: '#map',
-        lat: -12.043333,
-        lng: -77.028333
-      });
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
 
-
-      //this code is for smooth scroll and nav selector
-            $(document).ready(function () {
-              $(document).on("scroll", onScroll);
-              
-              //smoothscroll
-              $('a[href^="#"]').on('click', function (e) {
-                  e.preventDefault();
-                  $(document).off("scroll");
-                  
-                  $('a').each(function () {
-                      $(this).removeClass('active');
-                  })
-                  $(this).addClass('active');
-                
-                  var target = this.hash,
-                      menu = target;
-                  $target = $(target);
-                  $('html, body').stop().animate({
-                      'scrollTop': $target.offset().top+2
-                  }, 500, 'swing', function () {
-                      window.location.hash = target;
-                      $(document).on("scroll", onScroll);
-                  });
-              });
-          });
-
-          function onScroll(event){
-              var scrollPos = $(document).scrollTop();
-              $('.navbar-default .navbar-nav>li>a').each(function () {
-                  var currLink = $(this);
-                  var refElement = $(currLink.attr("href"));
-                  if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-                      $('.navbar-default .navbar-nav>li>a').removeClass("active");
-                      currLink.addClass("active");
-                  }
-                  else{
-                      currLink.removeClass("active");
-                  }
-              });
-          }
-     
-     
-     //this code is for animation nav
-     jQuery(window).scroll(function() {
-        var windowScrollPosTop = jQuery(window).scrollTop();
-
-        if(windowScrollPosTop >= 150) {
-          jQuery(".header").css({"background": "#B193DD",});
-          jQuery(".top-header img.logo").css({"margin-top": "-40px", "margin-bottom": "0"});
-          jQuery(".navbar-default").css({"margin-top": "-15px",});
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
-        else{
-          jQuery(".header").css({"background": "transparent",});
-           jQuery(".top-header img.logo").css({"margin-top": "-12px", "margin-bottom": "25px"});
-           jQuery(".navbar-default").css({"margin-top": "12px", "margin-bottom": "0"});
-          
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
         }
-     });
 
-});
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
 
-  ga('create', 'UA-10146041-21', 'auto');
-  ga('send', 'pageview');
-
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
