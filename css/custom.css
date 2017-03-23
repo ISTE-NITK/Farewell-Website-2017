@@ -1,7 +1,9 @@
-body {
-        background-image: url("../img/back.jpg");
-        background-size: 1366px 768px;                 /* <------ */
-    background-repeat:   no-repeat;
+html {
+	background-image: url("../img/back.jpg");
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
       
 } 
 
