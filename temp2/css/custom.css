@@ -1,0 +1,15 @@
+body {
+        background-image: url("../img/back.jpg");
+        background-size: 1366px 768px;                 /* <------ */
+    background-repeat:   no-repeat;
+      
+} 
+#mybutton {
+  display: none;
+  color: #ffffff;
+  background-color: #9d0416;
+  width: 8em;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
