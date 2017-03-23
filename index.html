@@ -14,6 +14,39 @@
 
 >>>>>>> 372ab9164d1c915cf1a3761191b48f291987b3b0
     <script>
+		function setCookie(cname, cvalue) {
+		var d = new Date();
+		d.setTime(d.getTime() + (1 * 60 * 60 * 1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+	function checkCookie() {
+		var user = getCookie("username");
+		if (user != "") {
+			window.location='temp2/video.html';
+		} else {
+			user = "iste_seniors";
+			if (user != "" && user != null) {
+				setCookie("username", user, 365);
+			}
+		}
+	}
         document.addEventListener('DOMContentLoaded', function() {
 
             Typed.new("#typed", {
@@ -46,6 +79,7 @@
         function foo() {
             console.log("Callback");
         }
+		checkCookie();
     </script>
 
     <link href="main.css" rel="stylesheet" />
