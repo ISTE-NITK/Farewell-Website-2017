@@ -1,3 +1,15 @@
+
+body {
+	background-color: black;
+	color: black;
+}
+#top{
+	background-color: black;
+	color: black;
+	 margin:0;
+    padding:0;
+}
+
 .person {
   position: relative;
   width: 100%;
@@ -12,7 +24,7 @@
   width: 100%;
   opacity: 0;
   transition: .75s ease;
-  background-color: #008CBA;
+  background-color: #1f600d;
 }
 
 .person:hover .overlay {
@@ -28,3 +40,56 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+
+
+
+       
+@-webkit-keyframes turnonlights {
+    0%        { color: #777a75; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    1%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    4%        { color: #f7f4f6; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    7%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    8%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    12%        { color: #01f75b; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    22%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    23%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 15px #bff993, 0 0 20px #54ff00, 0 0 30px #54ff00, 0 0 40px #54ff00; }
+    26%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    28%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    34%        { color: #024402; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 15px #bff993, 0 0 20px #54ff00, 0 0 30px #54ff00, 0 0 40px #54ff00; }
+    36%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    42%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    55%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 15px #bff993, 0 0 20px #54ff00, 0 0 30px #54ff00, 0 0 40px #54ff00; }
+    60%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    63%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 15px #bff993, 0 0 20px #54ff00, 0 0 30px #54ff00, 0 0 40px #54ff00; }
+    67%        { color: #80ff56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    72%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    73%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    76%        { color: #c0c4be; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    78%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    84%        { color: #80ff56; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 15px #bff993, 0 0 20px #54ff00, 0 0 30px #54ff00, 0 0 40px #54ff00; }
+    86%        { color: #626d56; text-shadow: 0 0 3px #686b5f, 0 0 5px #686b5f; }
+    96%    { color: #c9fffc; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00}
+    100%    { color: #c9fffc; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 15px #bff993, 0 0 20px #54ff00, 0 0 30px #54ff00, 0 0 40px #54ff00; }
+}
+
+.animate {
+    -webkit-animation-name: turnonlights;
+    -webkit-animation-duration: 3.0s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-timing-function: steps(2.5, start);
+    -moz-animation-name: turnonlights;
+    -moz-animation-duration: 3.0s;
+    -moz-animation-fill-mode: both;
+    -moz-animation-timing-function: steps(1.5, start);
+    animation-iteration-count:3;
+
+
+}
+
+.thodasaeffect{
+
+	color: white; text-shadow: 0 0 5px #bff993, 0 0 10px #bff993, 0 0 17px #54ff00, 0 0 38px #54ff00
+
+}
+
+audio {display: none;}
