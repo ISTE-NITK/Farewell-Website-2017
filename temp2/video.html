@@ -12,78 +12,75 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaina" rel="stylesheet">
-
-
-
-</head>
-<body style="margin:0;padding:0;">
-<audio src="spark.mp3" autoplay="true"></audio>
-
-	<!-- ====================================================
-	header section 
-	<header class="top-header" >
-		<div class="container" id="top">
-			<div class="row">
-				<div class="col-xs-5 header-logo">
-					<br>
-					<a href="video.html"><img src="iste.ico" alt="" class="img-responsive logo" style="width: 20%; margin-left: 20px;"></a>
-				</div>
-
-				<div class="col-md-7">
-					<nav class="navbar navbar-default">
-					  <div class="container-fluid nav-bar">
-					    <div class="navbar-header">
-					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					        <span class="sr-only">Toggle navigation</span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					      </button>
-					    </div>
-
-					    
-					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-					      <ul class="nav navbar-nav navbar-right" style="background-color: black ;color: black;">
-					        <li><a class="menu active animate" id="lights"  href="#home" >Invitation</a></li>
-					        <li><a class="menu animate" id="lights" >To</a></li>
-					        <li><a class="menu animate" id="lights">ISTE-NITK </a></li>
-					        <li><a class="menu animate" id="lights" >Farewell</a></li>
-					        <li><a class="menu animate"  id="lights"> 2017</a></li>
-					      </ul>
-					    </div>
-					  </div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</header> -->
-		
-
-		<div class="row container" id="top">
-  <div class="col-md-3">
-  		<div >
-					<br>
-					<a href="video.html"><img src="iste.ico" alt="" class="img-responsive logo" style="width: 40%; margin-left: 20px;"></a>
-				</div>
-  </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+  	(function($){
+    $.fn.extend({ 
+        rotaterator: function(options) {
  
-</div>
+            var defaults = {
+                fadeSpeed: 800,
+                pauseSpeed: 1000,
+				child:null
+            };
+             
+            var options = $.extend(defaults, options);
+         
+            return this.each(function() {
+                  var o =options;
+                  var obj = $(this);                
+                  var items = $(obj.children(), obj);
+				  items.each(function() {$(this).hide();})
+				  if(!o.child){var next = $(obj).children(':first');
+				  }else{var next = o.child;
+				  }
+				  $(next).fadeIn(o.fadeSpeed, function() {
+						$(next).delay(o.pauseSpeed).fadeOut(o.fadeSpeed, function() {
+							var next = $(this).next();
+							if (next.length == 0){
+									next = $(obj).children(':first');
+							}
+							$(obj).rotaterator({child : next, fadeSpeed : o.fadeSpeed, pauseSpeed : o.pauseSpeed});
+						})
+					});
+            });
+        }
+    });
+})(jQuery);
+
+ $(document).ready(function() {
+        $('#rotate').rotaterator({fadeSpeed:800, pauseSpeed:1000});
+ });
+ 
+ </script>
+</head>
 
 
-	<section class="slider" id="home">
+
+ <body style="margin:0;padding:0;">
+  <div id="wrapper">
+    <div id="content">
+	<div class="row container" id="top">
+	  <div class="col-md-3">
+			<div>
+				<br>
+				<a href="video.html"><img src="iste.ico" alt="" class="img-responsive logo" style="width: 40%; margin-left: 20px;"></a>
+			</div>
+	  </div>
+	 
+	</div>
+
+
+		<section class="slider" id="home">
 				<div class="container-fluid">
-					<div class="row" style="text-align: center;">
-						
+					<div class="row" style="text-align: center;">					
 			<center><h2 class="animate" id="lights"  href="#home" style="font-size: 65px;text-align:center" >Invitation To ISTE-NITK Farewell 2017</h2></center>
-	
-					
-					    </div>
+					<audio src="spark.mp3" autoplay="true"></audio>
 
-					</div>
+					 </div>
 				</div>
-			</section>
-
+		</section>
+	
 			<section class="slider" id="home">
 				<div class="container-fluid">
 					<div class="row" style=" padding-top: 70px; padding-bottom: 10px; text-align: center;">
@@ -92,7 +89,6 @@
 					    </div>
 
 					</div>
-				</div>
 			</section>
 
 
@@ -448,7 +444,9 @@
 								</div>
 							</div>
 						</div>
-					</section><!-- end of team section -->
+					</div>
+				</div>
+			</section><!-- end of team section -->
 
 			<footer class="footer clearfix">
 				<div class="container">
@@ -468,55 +466,9 @@
 			
 
 
-	<!-- script tags
-	============================================================= -->
-	<script src="js/jquery-2.1.1.js"></script>
-	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-	<script src="js/gmaps.js"></script>
-	<script src="js/smoothscroll.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/cus.js"></script>
+	
+	</div>
+  </div>
+    <input type="hidden" id="progress_width" value="0">
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script >
-  	(function($){
-    $.fn.extend({ 
-        rotaterator: function(options) {
- 
-            var defaults = {
-                fadeSpeed: 800,
-                pauseSpeed: 1000,
-				child:null
-            };
-             
-            var options = $.extend(defaults, options);
-         
-            return this.each(function() {
-                  var o =options;
-                  var obj = $(this);                
-                  var items = $(obj.children(), obj);
-				  items.each(function() {$(this).hide();})
-				  if(!o.child){var next = $(obj).children(':first');
-				  }else{var next = o.child;
-				  }
-				  $(next).fadeIn(o.fadeSpeed, function() {
-						$(next).delay(o.pauseSpeed).fadeOut(o.fadeSpeed, function() {
-							var next = $(this).next();
-							if (next.length == 0){
-									next = $(obj).children(':first');
-							}
-							$(obj).rotaterator({child : next, fadeSpeed : o.fadeSpeed, pauseSpeed : o.pauseSpeed});
-						})
-					});
-            });
-        }
-    });
-})(jQuery);
-
- $(document).ready(function() {
-        $('#rotate').rotaterator({fadeSpeed:800, pauseSpeed:1000});
- });
-
-  </script>
 </html>
