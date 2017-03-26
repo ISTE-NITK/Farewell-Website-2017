@@ -58,6 +58,7 @@
 
 
  <body style="margin:0;padding:0;">
+ 				<audio id="spark_audio" src="spark.mp3" preload="auto"></audio>
   <div id="wrapper">
     <div id="content">
 	<div class="row container" id="top">
@@ -72,15 +73,17 @@
 
 
 		<section class="slider" id="home">
+			<script>
+			window.onload = function() {
+				document.getElementById("spark_audio").play();
+			}
+			</script>
 				<div class="container-fluid">
 					<div class="row" style="text-align: center;">					
 			<center><h2 class="animate" id="lights"  href="#home" style="font-size: 65px;text-align:center" >Invitation To ISTE-NITK Farewell 2017</h2></center>
-					<audio src="spark.mp3" autoplay="true"></audio>
-
 					 </div>
 				</div>
 		</section>
-	
 			<section class="slider" id="home">
 				<div class="container-fluid">
 					<div class="row" style=" padding-top: 70px; padding-bottom: 10px; text-align: center;">
@@ -471,4 +474,5 @@
   </div>
     <input type="hidden" id="progress_width" value="0">
 </body>
+
 </html>
