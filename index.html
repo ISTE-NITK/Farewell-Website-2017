@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="welcome.ico"> 
 
 	
-    <script>
+    <script type="text/javascript">
 		function setCookie(cname, cvalue) {
 		var d = new Date();
 		d.setTime(d.getTime() + (1 * 60 * 60 * 1000));
@@ -75,7 +75,39 @@
         function foo() {
             console.log("Callback");
         }
-		checkCookie();
+		var isMobile = {
+			Android: function() {
+				return navigator.userAgent.match(/Android/i);
+			},
+			BlackBerry: function() {
+				return navigator.userAgent.match(/BlackBerry/i);
+			},
+			iOS: function() {
+				return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+			},
+			Opera: function() {
+				return navigator.userAgent.match(/Opera Mini/i);
+			},
+			Windows: function() {
+				return navigator.userAgent.match(/IEMobile/i);
+			},
+			any: function() {
+				return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+		}
+	};
+	
+	if( isMobile.any() ) {
+		alert('This site is best viewed on a Desktop/Laptop. Please visit istefarewell.ml on the same.');
+		document.location = "mobile.html";
+	}
+	else if (screen.width <= 800) {
+		alert('Your device screen size is too small for this page to be viewed. Seriously, What kind of a device are you using?');
+		document.location = "screen.html";
+	}
+	else if (screen.width > 800 && window.innerWidth<=800) {
+		document.location = "screen.html";
+	}
+	else checkCookie();
     </script>
 
     <link href="main.css" rel="stylesheet" />
