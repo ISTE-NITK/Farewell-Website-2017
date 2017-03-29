@@ -146,11 +146,11 @@
 		alert('This site is best viewed on a Desktop/Laptop. Please visit istefarewell.ml on the same.');
 		document.location = "mobile.html";
 	}
-	else if (screen.width <= 800) {
+	else if (screen.width <= 992) {
 		alert('Your device screen size is too small for this page to be viewed. Seriously, What kind of a device are you using?');
 		document.location = "screen.html";
 	}
-	else if (screen.width > 800 && window.innerWidth<=800) {
+	else if (screen.width > 992 && window.innerWidth<992) {
 		document.location = "screen.html";
 	}
 	else checkCookie();
